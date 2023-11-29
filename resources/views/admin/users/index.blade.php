@@ -1,107 +1,150 @@
-@extends('admin.layout.partials.crud')
+@extends('admin.layout.crud')
 
 @section('table')
+  @component('admin.components.table-filter')@endcomponent
+  @component('admin.components.filter-modal')
+    <div class="content-title">
+      <h3>filtrar tabla</h3>
+    </div>
+    <div class="content-text">
+      <label for="name">Nombre</label>
+      <input type="text">
+    </div>
+    <div class="content-text">
+      <label for="name">e-mail</label>
+      <input type="text">
+    </div>
+    <div class="content-buttons">
+      <button class="content-buttons-accept">
+        <h3>Aceptar</h3>
+      </button>
+      <button class="content-buttons-deny">
+        <h3>Cancelar</h3>
+      </button>
+    </div>
+  @endcomponent
+  @component('admin.components.delete-modal')
+    <div class="delete-modal-content">
+      <div class="content-title">
+        <h3>¿quiere eliminar este registro?</h3>
+      </div>
+      <div class="content-buttons">
+        <button class="content-buttons-accept">
+          <h3>Sí</h3>
+        </button>
+        <button class="content-buttons-deny">
+          <h3>No</h3>
+        </button>
+      </div>
+    </div>
+  @endcomponent
 
-  <article class="table-record">
-    <div class="table-buttons">
-      <div class="edit-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
+  <div class="table-records">
+    <article class="table-record">
+      <div class="table-buttons">
+        <div class="edit-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        </div>
+        <div class="delete-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="delete-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-          </svg>
-        </button>
+      <div class="table-data">
+        <ul>
+          <li><span>Email</span>bolitakinki69@hotmail.com</li>
+          <li><span>Nombre</span>Carlos</li>
+        </ul>
       </div>
-    </div>
-    <div class="table-data">
-      <ul>
-        <li><span>Email</span>bolitakinki69@hotmail.com</li>
-        <li><span>Nombre</span>Carlos</li>
-      </ul>
-    </div>
-  </article>
-  <article class="table-record">
-    <div class="table-buttons">
-      <div class="edit-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
+    </article>
+    <article class="table-record">
+      <div class="table-buttons">
+        <div class="edit-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        </div>
+        <div class="delete-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="delete-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-          </svg>
-        </button>
+      <div class="table-data">
+        <ul>
+          <li><span>Email</span>bolitakinki69@hotmail.com</li>
+          <li><span>Nombre</span>Carlos</li>
+        </ul>
       </div>
-    </div>
-    <div class="table-data">
-      <ul>
-        <li><span>Email</span>bolitakinki69@hotmail.com</li>
-        <li><span>Nombre</span>Carlos</li>
-      </ul>
-    </div>
-  </article>
-  <article class="table-record">
-    <div class="table-buttons">
-      <div class="edit-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
+    </article>
+    <article class="table-record">
+      <div class="table-buttons">
+        <div class="edit-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        </div>
+        <div class="delete-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="delete-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-          </svg>
-        </button>
+      <div class="table-data">
+        <ul>
+          <li><span>Email</span>bolitakinki69@hotmail.com</li>
+          <li><span>Nombre</span>Carlos</li>
+        </ul>
       </div>
-    </div>
-    <div class="table-data">
-      <ul>
-        <li><span>Email</span>bolitakinki69@hotmail.com</li>
-        <li><span>Nombre</span>Carlos</li>
-      </ul>
-    </div>
-  </article>
-  <article class="table-record">
-    <div class="table-buttons">
-      <div class="edit-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
+    </article>
+    <article class="table-record">
+      <div class="table-buttons">
+        <div class="edit-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        </div>
+        <div class="delete-button">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="delete-button">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-          </svg>
-        </button>
+      <div class="table-data">
+        <ul>
+          <li><span>Email</span>bolitakinki69@hotmail.com</li>
+          <li><span>Nombre</span>Carlos</li>
+        </ul>
       </div>
-    </div>
-    <div class="table-data">
-      <ul>
-        <li><span>Email</span>bolitakinki69@hotmail.com</li>
-        <li><span>Nombre</span>Carlos</li>
-      </ul>
-    </div>
-  </article>
+    </article>
+  </div>
+  
+  <div class="table-pagination">
+    <span> 4 {{ __('admin/pagination.total') }}</span>
+  </div>
 @endsection
 
 @section('form')

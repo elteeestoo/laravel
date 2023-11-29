@@ -1,4 +1,4 @@
-@extends('admin.layout.partials.crud')
+@extends('admin.layout.crud')
 
 @section('content')
 
