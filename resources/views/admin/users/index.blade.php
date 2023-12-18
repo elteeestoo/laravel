@@ -143,12 +143,25 @@
   </div>
   
   <div class="table-pagination">
-    <span> 4 {{ __('admin/pagination.total') }}</span>
+    <span>{{trans_choice('admin/pagination.total',  1, ['count' => 1])}}</span>
   </div>
 @endsection
 
 @section('form')
-    
+
+<div class="form-top-bar">
+  <div class="tabs">
+    <div class="tab active" data-tab="general">
+      <button>
+        General
+      </button>
+    </div>
+    <div class="tab" data-tab="images">
+      <button>
+        Imágenes
+      </button>
+    </div>
+  </div>
   <div class="form-buttons">
     <div class="form-clean-button">
       <button>
@@ -161,46 +174,63 @@
       </button>
     </div>
   </div>
-  <form>
-    <div class="form-element">
-      <div class="form-element-label">
-        <label for="name">
-          Nombre
-        </label>
+</div>
+<form>
+  <div class="tab-contents">
+    <div class="tab-content active" data-tab="general">
+      <div class="form-element">
+        <div class="form-element-label">
+          <label for="name">
+            Nombre
+          </label>
+        </div>
+        <div class="form-element-input">
+          <input type="text">
+        </div>
       </div>
-      <div class="form-element-input">
-        <input type="text">
+      <div class="form-element">
+        <div class="form-element-label">
+          <label for="email">
+            Email
+          </label>
+        </div>
+        <div class="form-element-input">
+          <input type="email">
+        </div>
+      </div>
+      <div class="form-element">
+        <div class="form-element-label">
+          <label for="password">
+            Contraseña
+          </label>
+        </div>
+        <div class="form-element-input">
+          <input type="password" class="validate" data-minlength="8">
+        </div>
+      </div><div class="form-element">
+        <div class="form-element-label">
+          <label for="confirmar-password">
+            Repetir contraseña
+          </label>
+        </div>
+        <div class="form-element-input">
+          <input type="password">
+        </div>
       </div>
     </div>
-    <div class="form-element">
-      <div class="form-element-label">
-        <label for="email">
-          Email
-        </label>
-      </div>
-      <div class="form-element-input">
-        <input type="email">
-      </div>
-    </div>
-    <div class="form-element">
-      <div class="form-element-label">
-        <label for="password">
-          Contraseña
-        </label>
-      </div>
-      <div class="form-element-input">
-        <input type="password">
-      </div>
-    </div><div class="form-element">
-      <div class="form-element-label">
-        <label for="confirmar-password">
-          Repetir contraseña
-        </label>
-      </div>
-      <div class="form-element-input">
-        <input type="password">
+    <div class="tab-content" data-tab="images">
+      <div class="form-element">
+        <div class="form-element-label">
+          <label for="avatar">
+            Avatar
+          </label>
+        </div>
+        <div class="form-element-input">
+          <input type="file">
+        </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>
 
 @endsection

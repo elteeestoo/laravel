@@ -2,18 +2,66 @@
     flex: 2;
 }
 
+.form-top-bar{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 100%;
+    margin-bottom: 2rem;
+
+}
+
+.tabs{
+    display: flex;
+    width: 100%;
+}
+
+.tab{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.tab button{
+    color: blue;
+}
+
+.tab.active button{
+    color: white;
+}
+
+.tab.active{
+    background-color: blue;
+    color: white;
+}
+
+.tab-content.active{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+}
+
+.tab-content{
+    display: none;
+   
+}
+
 .form-buttons {
     background-color: hsl(0, 0%, 100%);
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    padding: 0.5rem;
     padding-right: 0.5rem;
 }
 
 .form-clean-button button svg,
 .form-save-button button svg {
     width: 2rem;
+    
 }
 
 .form-clean-button button svg path,
@@ -26,11 +74,6 @@
     fill: $hover-color;
 }
 
-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%;
-}
 
 .form-element {
     display: flex;

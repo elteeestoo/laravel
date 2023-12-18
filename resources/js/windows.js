@@ -1,20 +1,28 @@
+
 export default (() => {
 
-    const data = document.querySelector(".form-data");
-    const databutton = document.querySelector(".form-data button");
-    const images = document.querySelector(".form-images");
-    const imagesbutton = document.querySelector(".form-images button");
+  const main = document.querySelector('main');
+
+  main?.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    if (event.target.closest('.tab')) {
+
+      if (event.target.closest('.tab').classList.contains('active')) {
+        return;
+      }
+      
+      const tabClicked = event.target.closest('.tab');
+      const tabActive = tabClicked.parentElement.querySelector('.active');
+      
+      tabClicked.classList.add('active');
+      tabActive.classList.remove('active');
+
+      tabClicked.closest('section').querySelector(`.tab-content.active[data-tab="${tabActive.dataset.tab}"]`).classList.remove('active');
+      tabClicked.closest('section').querySelector(`.tab-content[data-tab="${tabClicked.dataset.tab}"]`).classList.add('active');
+    }
+  });
   
-    databutton?.addEventListener("click", () => {
-        images.classList.add("active")
-        data.classList.add("active");
-        databutton.classList.remove("active");
-    });
-    imagesbutton?.addEventListener("click", () => {
-        data.classList.add("active")
-        images.classList.toggle("active");
-        imagesbutton.classList.toggle("active");
-      });
-  
-  })();
+})();
     

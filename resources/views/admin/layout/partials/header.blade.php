@@ -2,6 +2,9 @@
   <div class="top-bar-title">
     <h1>Usuarios</h1>
   </div>
+  <div>
+    <span>{{trans_choice('admin/user-area.welcome',  "f", ["name" => "Lolita"])}}</span>
+  </div>
   <div class="container">
     <button class="container-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
