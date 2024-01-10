@@ -5,25 +5,25 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Http\Requests\Admin\UserRequest;
+use App\Models\Language;
+use App\Http\Requests\Admin\LanguageRequest;
 use Debugbar;
 
-class UserController extends Controller
+class LanguageController extends Controller
 {
-  public function __construct(private User $user){}
+  public function __construct(private Language $language){}
   
   public function index()
   {
     try{
 
-      $users = $this->user
+      $languages = $this->language
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
-      $view = View::make('admin.users.index')
-      ->with('user', $this->user)
-      ->with('users', $users);
+      $view = View::make('admin.languages.index')
+      ->with('language', $this->language)
+      ->with('languages', $languages);
 
       if(request()->ajax()) {
           
@@ -40,7 +40,7 @@ class UserController extends Controller
     }
     catch(\Exception $e){
       return response()->json([
-        'message' => \Lang::get('admin/notification.error'),
+        'message' => $e->getMessage(),
       ], 500);
     }
   }
@@ -49,8 +49,8 @@ class UserController extends Controller
   {
     try {
 
-      $view = View::make('admin.users.index')
-        ->with('user', $this->user)
+      $view = View::make('admin.languages.index')
+        ->with('language', $this->language)
         ->renderSections();
 
       return response()->json([
@@ -64,23 +64,17 @@ class UserController extends Controller
     }
   }
 
-  public function store(UserRequest $request)
+  public function store(LanguageRequest $request)
   {            
     try{
 
       $data = $request->validated();
-
-      unset($data['password_confirmation']);
-      
-      if (!$request->filled('password') && $request->filled('id')){
-        unset($data['password']);
-      }
   
-      $this->user->updateOrCreate([
+      $this->language->updateOrCreate([
         'id' => $request->input('id')
       ], $data);
 
-      $users = $this->user
+      $languages = $this->language
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
@@ -90,9 +84,9 @@ class UserController extends Controller
         $message = \Lang::get('admin/notification.create');
       }
 
-      $view = View::make('admin.users.index')
-        ->with('users', $users)
-        ->with('user', $this->user)
+      $view = View::make('admin.languages.index')
+        ->with('languages', $languages)
+        ->with('language', $this->language)
         ->with('message', $message)   
         ->renderSections();      
 
@@ -109,13 +103,13 @@ class UserController extends Controller
     }
   }
 
-  public function edit(User $user)
+  public function edit(Language $language)
   {
     
     try{
 
-      $view = View::make('admin.users.index')
-      ->with('user', $user);
+      $view = View::make('admin.languages.index')
+      ->with('language', $language);
       
       if(request()->ajax()) {
 
@@ -135,20 +129,20 @@ class UserController extends Controller
     }
   }
 
-  public function destroy(User $user)
+  public function destroy(Language $language)
   {
     try{
-      $user->delete();
+      $language->delete();
 
-      $users = $this->user
+      $languages = $this->language
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
       $message = \Lang::get('admin/notification.destroy');
       
-      $view = View::make('admin.users.index')
-        ->with('user', $this->user)
-        ->with('users', $users)
+      $view = View::make('admin.languages.index')
+        ->with('language', $this->language)
+        ->with('languages', $languages)
         ->with('message', $message)   
         ->renderSections();
       

@@ -12,6 +12,7 @@
   <title>Título</title>
   <meta name="description" content="descripción de la web, se recomienda 90 caracteres">
   <meta name="keywords" 	 content="palabras clave, separadas, por comas">
+  <meta name="csrf-token" content="{{csrf_token()}}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +22,9 @@
 </head>
 
 <body>
+
+  @component('admin.components.delete-modal')@endcomponent
+
   @include('admin.layout.partials.header')
   <main>
     @yield('content')
